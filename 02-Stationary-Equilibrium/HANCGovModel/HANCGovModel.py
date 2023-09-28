@@ -25,15 +25,17 @@ class HANCGovModelClass(EconModelClass,GEModelClass):
         self.intertemps_hh = ['vbeg_a'] # intertemporal variables
 
         # c. GE
-        self.shocks = ['G'] # exogenous shocks
-        self.unknowns = ['pB'] # endogenous unknowns
-        self.targets = ['clearing_B'] # targets = 0 (not used today)
+        self.shocks = ['G']             # exogenous shocks
+        self.unknowns = ['pB']          # endogenous unknowns
+        self.targets = ['clearing_B']   # targets = 0 (not used today)
+        # This drive the transition path 
 
         # d. all variables
         self.blocks = [ # list of strings to block-functions
             'blocks.government',
             'hh', # household block
             'blocks.market_clearing']
+        # Define the DAG (see blocks.py)
 
         # d. functions
         self.solve_hh_backwards = household_problem.solve_hh_backwards
